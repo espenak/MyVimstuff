@@ -1,0 +1,7 @@
+.DS_Store
+*.pyc
+.*.swp
+plugin/vcode
+gvimrc.local
+.netrwhist
+sessions/
