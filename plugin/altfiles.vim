@@ -56,7 +56,7 @@ altfiles = AlternateFiles()
 EOF
 
 fun! SetupAltFile()
-	nnoremap <Leader>tt :py altfiles.findAlt()<CR>
+	nnoremap <Leader>af :py altfiles.findAlt()<CR>
 endfun
 
 au BufNewFile,BufRead *.h call SetupAltFile()

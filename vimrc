@@ -70,9 +70,7 @@ let Tlist_Sort_Type = "name"
 
 " General global shortcuts
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-noremap <C-M-t> <ESC>:tabnew<CR>
-map <C-f> :exec("tjump ".expand("<cword>"))<CR>
-map <C-g> :tab split<CR>:exec("tjump ".expand("<cword>"))<CR>
+noremap <Leader>tt <ESC>:tabnew<CR>
 
 
 " Plugin settings
