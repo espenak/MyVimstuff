@@ -17,10 +17,10 @@ snippet vector
 snippet ns
 	namespace ${1:`Filename('', 'my')`} {
 		${2}
-	} /* $1 */
+	} /* Namespace $1 */
 # Class
 snippet cl
-	class ${1:`Filename('$1_t', 'name')`} {
+	class ${1:`Filename('$1', 'name')`} {
 	public:
 		$1 (${2:arguments});
 		virtual ~$1 ();
@@ -28,3 +28,22 @@ snippet cl
 	private:
 		${3:/* data */}
 	};
+
+snippet test
+	#define BOOST_TEST_DYN_LINK
+	#define BOOST_TEST_MODULE ${1:`Filename('$1', 'name')`}
+	#include <boost/test/unit_test.hpp>
+	#include <string>
+	using namespace ${2:P2G};
+
+	BOOST_AUTO_TEST_CASE( ${3:$1}${4:Main} ) {
+		BOOST_REQUIRE(${5:2 == 2});
+	}
+
+snippet std::co
+	std::cout << ${1} << std::endl;
+snippet co
+	cout << ${1} << endl;
+
+snippet std
+	std::${1}
