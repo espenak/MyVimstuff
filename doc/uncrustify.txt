@@ -1,0 +1,18 @@
+*uncrustify*
+
+Setup example
+-------------
+
+Find indent files here:
+	https://github.com/bengardner/uncrustify/tree/master/etc
+Add indent files to: ~/.vim/uncrustify/
+
+Add something like this to ftplugin/cpp.vim:
+	let g:UncrustifyIndentFile= "gnu-indent.cfg"
+
+
+Usage
+-----
+
+<Leader>in      Indent file. This replaces the entire buffer with the output
+                from uncrustify, but you can undo it if it fails.

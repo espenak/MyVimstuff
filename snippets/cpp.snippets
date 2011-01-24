@@ -1,11 +1,12 @@
 # Read File Into Vector
 snippet readfile
 	std::vector<char> v;
-	if (FILE *${2:fp} = fopen(${1:"filename"}, "r")) {
-	    char buf[1024];
-	    while (size_t len = fread(buf, 1, sizeof(buf), $2))
-	    	v.insert(v.end(), buf, buf + len);
-	    fclose($2);
+	if (FILE *${2:fp} = fopen(${1:"filename"}, "r"))
+	{
+	  char buf[1024];
+	  while (size_t len = fread(buf, 1, sizeof(buf), $2))
+	    v.insert(v.end(), buf, buf + len);
+	  fclose($2);
 	}${3}
 # std::map
 snippet map
@@ -15,17 +16,19 @@ snippet vector
 	std::vector<${1:char}> v${2};
 # Namespace
 snippet ns
-	namespace ${1:`Filename('', 'my')`} {
-	    ${2}
-	} /* Namespace $1 */
+	namespace ${1:`Filename('', 'my')`}
+	{
+	  ${2}
+	}
 # Class
 snippet cl
-	class ${1:`Filename('$1', 'name')`} {
+	class ${1:`Filename('$1', 'name')`}
+	{
 	public:
-	    $1(${2:arguments});
+	  $1(${2:arguments});
 
 	private:
-	    ${3:/* data */}
+	  ${3:/* data */}
 	};
 
 snippet test
@@ -35,8 +38,9 @@ snippet test
 	#include <string>
 	using namespace ${2:P2G};
 
-	BOOST_AUTO_TEST_CASE( ${3:$1}${4:Main} ) {
-	    BOOST_REQUIRE(${5:2 == 2});
+	BOOST_AUTO_TEST_CASE( ${3:$1}${4:Main} )
+	{
+	  BOOST_REQUIRE(${5:2 == 2});
 	}
 
 snippet std::co

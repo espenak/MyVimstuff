@@ -1775,6 +1775,7 @@ stlrefvim-intro	stlrefvim.txt	/*stlrefvim-intro*
 stlrefvim-license	stlrefvim.txt	/*stlrefvim-license*
 stlrefvim-usage	stlrefvim.txt	/*stlrefvim-usage*
 stlrefvim.txt	stlrefvim.txt	/*stlrefvim.txt*
+uncrustify	uncrustify.txt	/*uncrustify*
 vimwiki	vimwiki.txt	/*vimwiki*
 vimwiki-calendar	vimwiki.txt	/*vimwiki-calendar*
 vimwiki-changelog	vimwiki.txt	/*vimwiki-changelog*
