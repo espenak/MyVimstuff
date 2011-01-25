@@ -4,9 +4,7 @@ gf           Go to file under cursor (ctrl-w gf: in new tab).
 <Leader>af   Alternate files.
 
 Tags:
-    <Leader>inr      Recursive tags-file generation.
-    <Leader>ing      Update tags-file with files changed in the current git repo.
-    <Leader>inc      Update tags-file with changes to the current file.
+    <Leader>ix       Recursive tags-file generation.
     <Leader>jw       Jump to tag under cursor in this window.
     <Leader>jt       Jump to tag under cursor in new tab.
 
