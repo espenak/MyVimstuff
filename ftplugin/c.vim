@@ -10,11 +10,10 @@ set makeprg=make\ -C\ build
 " ctags
 let g:CtagsHelperCtagsOpts = "--c++-kinds=+p --fields=+iaS --extra=+q"
 
-setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 
-setlocal shiftwidth=2 
-setlocal tabstop=8 
+setlocal shiftwidth=4
+setlocal tabstop=4
 setlocal cindent
 setlocal expandtab
-let g:UncrustifyIndentFile= "gnu-indent.cfg"
+let g:UncrustifyIndentFile= "allman.cfg"
 
 call g:BracketMap()
