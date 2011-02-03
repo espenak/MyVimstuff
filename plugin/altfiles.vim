@@ -30,13 +30,19 @@ class AlternateFiles(object):
 	def _openFile(self, prefix, dirnames, extensions):
 		path = self._searchForFile(dirnames, prefix, extensions)
 		if path == None:
-			self._error("No alternate file found")
-			return
+			self._handleNotFound()
+		else:
+			self._editFile(path)
+
+	def _editFile(self, path):
 		if vim.eval('buflisted("%s")' % path) == "1":
 			bufname = vim.eval('bufname("%s")' % path)
 			vim.command("b %s" % bufname)
 		else:
 			vim.command("edit %s" % path)
+
+	def _handleNotFound(self):
+		self._error("No alternate file found")
 
 	def findAlt(self):
 		filename = vim.current.buffer.name
@@ -51,12 +57,20 @@ class AlternateFiles(object):
 			self._error("Your current file in not among the configured filetypes for altfiles: %s" %
 				",".join(self.header_ext+self.source_ext))
 
+class AlternateFilesWithCreate(AlternateFiles):
+	def _handleNotFound(self):
+		filename = os.path.splitext(vim.current.buffer.name)[0] + ".cc"
+		self._editFile(filename)
+	
+
 altfiles = AlternateFiles()
+altfilesCreate = AlternateFilesWithCreate()
 
 EOF
 
 fun! SetupAltFile()
 	nnoremap <Leader>af :py altfiles.findAlt()<CR>
+	nnoremap <Leader>ac :py altfilesCreate.findAlt()<CR>
 endfun
 
 au BufNewFile,BufRead *.h call SetupAltFile()
