@@ -20,6 +20,7 @@ set switchbuf=usetab,split " Open file-links from the quickfix window in a exist
 set tabstop=4
 set shiftwidth=4           "number of spaces used by >> << and cindent
 set smarttab
+set expandtab
 set laststatus=2           " Show filename and cursor position at the bottom of the screen
 
 
