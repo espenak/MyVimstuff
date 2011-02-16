@@ -20,6 +20,7 @@ set switchbuf=usetab,split " Open file-links from the quickfix window in a exist
 set tabstop=4
 set shiftwidth=4           "number of spaces used by >> << and cindent
 set smarttab
+set expandtab
 set laststatus=2           " Show filename and cursor position at the bottom of the screen
 
 
@@ -78,7 +79,6 @@ noremap <Leader>tt <ESC>:tabnew<CR>
 " Plugin settings
 let g:proj_flags="cgLsStmv"    " Project.vim settings
 let g:vimwiki_list = [{'path': '~/Dropbox/masterwiki/', 'path_html': '~/Dropbox/html_masterwiki/', 'auto_export': 1}, {'path': '~/Dropbox/personalwiki/', 'path_html': '~/Dropbox/html_personalwiki/', 'auto_export': 1}]
-
 
 map <Leader>dec<CR> <C-x>
 map <Leader>inc<CR> <C-a>

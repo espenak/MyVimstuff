@@ -22,3 +22,4 @@ let g:clang_complete_auto=1
 let g:clang_hl_errors=1
 let g:clang_periodic_quickfix=1
 let g:clang_snippets=1
+
