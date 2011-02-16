@@ -16,10 +16,9 @@ snippet vector
 	std::vector<${1:char}> v${2};
 # Namespace
 snippet ns
-	namespace ${1:P2G}
-	{
-	    ${2}
-	}
+	namespace ${1:P2G} {
+	${2}
+	} // namespace $1
 # Class
 snippet cl
 	class ${1:`Filename('$1', 'name')`}
@@ -27,7 +26,6 @@ snippet cl
 	    public:
 	        $1(${2});
 	};
-
 snippet test
 	#define BOOST_TEST_DYN_LINK
 	#define BOOST_TEST_MODULE ${1:`Filename('$1', 'name')`}
@@ -39,36 +37,51 @@ snippet test
 	{
 	    BOOST_REQUIRE(${5:2 == 2});
 	}
-
 snippet std::co
 	std::cout << ${1} << std::endl;
 snippet co
 	cout << ${1} << endl;
-
 snippet std
 	std::${1}
 snippet <<
 	<< "${1: }" << ${2}
+snippet hhp2g
+	#pragma once
 
+	namespace P2G {
+	namespace olib {
+
+	class ${1:`Filename('$1', 'name')`}
+	{
+	    public:
+	        $1(${2});
+	};
+
+	} // namespace olib
+	} // namespace P2G
+snippet ccp2g
+	#include "${1:`Filename('$1', 'name')`}.h"
+
+	namespace P2G {
+	namespace olib {
+
+	$1::$1(${2})
+	{
+	    ${3}
+	}
+
+	} // namespace olib
+	} // namespace P2G
 snippet hh
 	#pragma once
 
-	namespace ${1:P2G}
-	{
-	    class ${2:`Filename('$1', 'name')`}
-	    {
-	        public:
-	            $2(${3});
-	    };
-	}
-
-snippet cc
+	${2}
+snippet ccp
 	#include "${1:`Filename('$1', 'name')`}.h"
 
-	namespace ${2:P2G}
+	${2}
+snippet for
+	for(${1:int} ${2:i} = ${3:0}; $2 < ${4:count}; $2${5:++})
 	{
-	    $1::$1(${3})
-	    {
-	        ${4}
-	    }
+	    ${6}
 	}

@@ -78,3 +78,7 @@ noremap <Leader>tt <ESC>:tabnew<CR>
 " Plugin settings
 let g:proj_flags="cgLsStmv"    " Project.vim settings
 let g:vimwiki_list = [{'path': '~/Dropbox/masterwiki/', 'path_html': '~/Dropbox/html_masterwiki/', 'auto_export': 1}, {'path': '~/Dropbox/personalwiki/', 'path_html': '~/Dropbox/html_personalwiki/', 'auto_export': 1}]
+
+
+map <Leader>dec<CR> <C-x>
+map <Leader>inc<CR> <C-a>
