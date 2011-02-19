@@ -82,3 +82,11 @@ let g:vimwiki_list = [{'path': '~/Dropbox/masterwiki/', 'path_html': '~/Dropbox/
 
 map <Leader>dec<CR> <C-x>
 map <Leader>inc<CR> <C-a>
+
+
+" FuzzyFinder
+map <Leader>ff :FufFile<CR>
+map <Leader>fg :FufFile **/<CR>
+map <Leader>fdg :FufDir **/<CR>
+let g:fuf_dir_exclude='\v(^|[/\\])(\.hg|\.git|\.bzr|build)($|[/\\])'
+let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp|DS_Store)$|(^|[/\\])(\.hg|\.git|\.bzr|build)($|[/\\])'
