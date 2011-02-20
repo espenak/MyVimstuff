@@ -28,5 +28,5 @@ let b:AstyleOptions = "--style=allman --indent-namespaces --indent-classes --ind
 let b:AstyleFilePatt = '"*.cc" "*.h"'
 map <Leader>in :call g:AstyleIndentCurrentBuffer(b:AstyleOptions)<CR>
 map <Leader>rin :call g:AstyleIndentDirRecursive(b:AstyleOptions, b:AstyleFilePatt)<CR>
-"map <Leader>in :%!astyle --style=allman --indent-namespaces --indent-classes --indent-cases<CR>
-"map <Leader>rin :!astyle --style=allman --indent-namespaces --indent-classes "*.cc" "*.h"
+
+call g:SetupCmakehelpers()
