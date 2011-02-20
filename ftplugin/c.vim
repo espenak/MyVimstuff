@@ -14,6 +14,7 @@ setlocal shiftwidth=4
 setlocal tabstop=4
 setlocal cindent
 setlocal expandtab
+setlocal cinoptions+=(0
 let g:UncrustifyIndentFile= "allman.cfg"
 
 call g:BracketMap()
