@@ -7,4 +7,4 @@ function! Uncrustify()
 	call setpos('.', save_cursor)
 endfunction
 
-map <Leader>in :call Uncrustify()<CR>
+"map <Leader>in :call Uncrustify()<CR>

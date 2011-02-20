@@ -23,3 +23,10 @@ let g:clang_hl_errors=1
 let g:clang_periodic_quickfix=1
 let g:clang_snippets=1
 
+
+let b:AstyleOptions = "--style=allman --indent-namespaces --indent-classes --indent-cases"
+let b:AstyleFilePatt = '"*.cc" "*.h"'
+map <Leader>in :call g:AstyleIndentCurrentBuffer(b:AstyleOptions)<CR>
+map <Leader>rin :call g:AstyleIndentDirRecursive(b:AstyleOptions, b:AstyleFilePatt)<CR>
+"map <Leader>in :%!astyle --style=allman --indent-namespaces --indent-classes --indent-cases<CR>
+"map <Leader>rin :!astyle --style=allman --indent-namespaces --indent-classes "*.cc" "*.h"
