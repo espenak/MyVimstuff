@@ -1,0 +1,3 @@
+C++=*.cpp *.hpp *.cxx *.hxx *.cc *.c *.h
+Web=*.htm *.html *.js
+CMake=CMakeLists.txt

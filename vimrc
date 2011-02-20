@@ -90,3 +90,9 @@ map <Leader>fg :FufFile **/<CR>
 map <Leader>fdg :FufDir **/<CR>
 let g:fuf_dir_exclude='\v(^|[/\\])(\.hg|\.git|\.bzr|build)($|[/\\])'
 let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp|DS_Store)$|(^|[/\\])(\.hg|\.git|\.bzr|build)($|[/\\])'
+
+
+" Easygrep
+let EasyGrepMode=2
+let EasyGrepFileAssociations=expand("~/.vim/easygrep.txt")
+let EasyGrepRecursive=1
