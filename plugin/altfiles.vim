@@ -4,7 +4,8 @@ import os.path
 import sys
 
 class AlternateFiles(object):
-	def __init__(self):
+	def __init__(self, openInTab=False):
+		self.openInTab = openInTab
 		self.header_ext = (".h", ".hpp", ".hxx")
 		self.source_ext = (".c", ".cxx", ".cpp", ".cc", ".C")
 
@@ -35,6 +36,8 @@ class AlternateFiles(object):
 			self._editFile(path)
 
 	def _editFile(self, path):
+		if self.openInTab:
+			vim.command("tabnew")
 		if vim.eval('buflisted("%s")' % path) == "1":
 			bufname = vim.eval('bufname("%s")' % path)
 			vim.command("b %s" % bufname)
@@ -64,12 +67,14 @@ class AlternateFilesWithCreate(AlternateFiles):
 	
 
 altfiles = AlternateFiles()
+altfilesTab = AlternateFiles(openInTab=True)
 altfilesCreate = AlternateFilesWithCreate()
 
 EOF
 
 fun! SetupAltFile()
 	nnoremap <Leader>af :py altfiles.findAlt()<CR>
+	nnoremap <Leader>at :py altfilesTab.findAlt()<CR>
 	nnoremap <Leader>ac :py altfilesCreate.findAlt()<CR>
 endfun
 
