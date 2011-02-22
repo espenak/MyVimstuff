@@ -16,8 +16,17 @@ snippet vector
 	std::vector<${1:char}> v${2};
 # Namespace
 snippet ns
-	namespace ${1:P2G} {
-	${2}
+	namespace ${1}
+	{
+	    ${2}
+	} // namespace $1
+snippet nsns
+	namespace ${1:a}
+	{
+	    namespace ${2:b}
+	    {
+	        ${3}
+	    } // namespace $2
 	} // namespace $1
 # Class
 snippet cl
@@ -40,7 +49,9 @@ snippet test
 snippet std::co
 	std::cout << ${1} << std::endl;
 snippet co
-	cout << ${1} << endl;
+	std::cout << ${1} << std::endl;
+snippet ce
+	std::cerr << ${1} << std::endl;
 snippet std
 	std::${1}
 snippet <<
@@ -48,35 +59,34 @@ snippet <<
 snippet hhp2g
 	#pragma once
 
-	namespace P2G {
-	namespace olib {
-
-	class ${1:`Filename('$1', 'name')`}
+	namespace P2G
 	{
-	    public:
-	        $1(${2});
-	};
-
-	} // namespace olib
+	    namespace olib
+	    {
+	        class ${1:`Filename('$1', 'name')`}
+	            {
+	                public:
+	                    $1(${2});
+	            };
+	    } // namespace olib
 	} // namespace P2G
 snippet ccp2g
 	#include "${1:`Filename('$1', 'name')`}.h"
 
-	namespace P2G {
-	namespace olib {
-
-	$1::$1(${2})
+	namespace P2G
 	{
-	    ${3}
-	}
-
-	} // namespace olib
+	    namespace olib {
+	        $1::$1(${2})
+	        {
+	            ${3}
+	        }
+	    } // namespace olib
 	} // namespace P2G
 snippet hh
 	#pragma once
 
 	${2}
-snippet ccp
+snippet cc
 	#include "${1:`Filename('$1', 'name')`}.h"
 
 	${2}
@@ -84,4 +94,38 @@ snippet for
 	for(${1:int} ${2:i} = ${3:0}; $2 < ${4:count}; $2${5:++})
 	{
 	    ${6}
+	}
+snippet binc shared_ptr shared_ptr
+	#include <boost/shared_ptr.hpp>
+snippet binc enable_shared_from_this enable_shared_from_this
+	#include <boost/enable_shared_from_this.hpp>
+snippet binc thread thread
+	#include <boost/thread.hpp>
+snippet binc function function
+	#include <boost/function.hpp>
+snippet binc bind bind
+	#include <boost/bind.hpp>
+snippet binc asio
+	#include <boost/asio.hpp>
+snippet binc lex lexical_cast
+	#include <boost/lexical_cast.hpp>
+snippet binc shared_array shared_array
+	#include <boost/shared_array.hpp>
+snippet binc sleep Posix time sleep
+	#include <boost/date_time/posix_time/posix_time.hpp>
+	${1:#include <boost/thread.hpp>}
+
+snippet bsleep millisec Sleep milliseconds
+	boost::this_thread::sleep(boost::posix_time::milliseconds(${1:500}));
+snippet bsleep sec Sleep seconds
+	boost::this_thread::sleep(boost::posix_time::seconds(${1:1}));
+
+snippet tsh
+	typedef boost::shared_ptr<${1:/*classname*/}> $1_ptr;${2}
+snippet make
+	static ${1:/*classname*/}_ptr make(${2});${3}
+snippet ::make
+	${1:/*classname*/}_ptr make(${2})
+	{
+	    return $1_ptr(new $1(${3}));${4}
 	}
