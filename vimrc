@@ -22,6 +22,7 @@ set shiftwidth=4           "number of spaces used by >> << and cindent
 set smarttab
 set expandtab
 set laststatus=2           " Show filename and cursor position at the bottom of the screen
+set wildmenu " turn on wild menu, try typing :h and press <Tab>
 
 
 " Tell vim to remember certain things when we exit
