@@ -105,5 +105,5 @@ let g:jah_Quickfix_Win_Height=20
 map <Leader>qq :QFix<CR>
 
 " C-space to toggle escape
-nnoremap <C-space> i
+nnoremap <C-space> a
 imap <C-space> <Esc>
