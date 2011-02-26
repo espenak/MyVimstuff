@@ -16,7 +16,7 @@ snippet vector
 	std::vector<${1:char}> v${2};
 # Namespace
 snippet ns
-	namespace ${1}
+	namespace ${1:a}
 	{
 	    ${2}
 	} // namespace $1
@@ -95,23 +95,25 @@ snippet for
 	{
 	    ${6}
 	}
-snippet binc shared_ptr shared_ptr
+snippet binc shared_ptr
 	#include <boost/shared_ptr.hpp>
-snippet binc enable_shared_from_this enable_shared_from_this
+snippet binc make_shared
+	#include <boost/make_shared.hpp>
+snippet binc enable_shared_from_this
 	#include <boost/enable_shared_from_this.hpp>
-snippet binc thread thread
+snippet binc thread
 	#include <boost/thread.hpp>
-snippet binc function function
+snippet binc function
 	#include <boost/function.hpp>
-snippet binc bind bind
+snippet binc bind
 	#include <boost/bind.hpp>
 snippet binc asio
 	#include <boost/asio.hpp>
-snippet binc lex lexical_cast
+snippet binc lexical_cast
 	#include <boost/lexical_cast.hpp>
-snippet binc shared_array shared_array
+snippet binc shared_array
 	#include <boost/shared_array.hpp>
-snippet binc sleep Posix time sleep
+snippet binc Posix time sleep
 	#include <boost/date_time/posix_time/posix_time.hpp>
 	${1:#include <boost/thread.hpp>}
 
@@ -121,7 +123,7 @@ snippet bsleep sec Sleep seconds
 	boost::this_thread::sleep(boost::posix_time::seconds(${1:1}));
 
 snippet tsh
-	typedef boost::shared_ptr<${1:/*classname*/}> $1_ptr;${2}
+	typedef boost::shared_ptr<${1:`Filename('$1', 'name')`}> $1_ptr;${2}
 snippet make
 	static ${1:/*classname*/}_ptr make(${2});${3}
 snippet ::make

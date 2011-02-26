@@ -23,6 +23,7 @@ set smarttab
 set expandtab
 set laststatus=2           " Show filename and cursor position at the bottom of the screen
 set wildmenu " turn on wild menu, try typing :h and press <Tab>
+set switchbuf=newtab,usetab " Things that switch buffers, like quickfix will open new tabs, but reuse already open tabs.
 
 
 " Tell vim to remember certain things when we exit
@@ -53,6 +54,7 @@ au BufNewFile,BufRead *.cu setlocal filetype=cpp.doxygen
 au BufNewFile,BufRead *.cl setlocal filetype=opencl
 au BufRead,BufNewFile *.json setlocal filetype=json
 au BufRead,BufNewFile *.h setlocal filetype=cpp
+
 
 
 " taglist
@@ -97,3 +99,11 @@ let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp|DS_Store)$|(^|[/\\])(\
 let EasyGrepMode=2
 let EasyGrepFileAssociations=expand("~/.vim/easygrep.txt")
 let EasyGrepRecursive=1
+
+" Toggle quickfix
+let g:jah_Quickfix_Win_Height=20
+map <Leader>qq :QFix<CR>
+
+" C-space to toggle escape
+nnoremap <C-space> i
+imap <C-space> <Esc>
