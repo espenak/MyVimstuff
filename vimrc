@@ -107,3 +107,11 @@ map <Leader>qq :QFix<CR>
 " C-space to toggle escape
 nnoremap <C-space> a
 imap <C-space> <Esc>
+
+
+set undofile
+set undodir=~/.vim/undodir
+"au BufRead * rundo
+"au BufWritePost * wundo
+
+call pathogen#runtime_append_all_bundles()
