@@ -5,3 +5,4 @@ plugin/vcode
 gvimrc.local
 .netrwhist
 sessions/
+undodir/

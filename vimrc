@@ -60,14 +60,14 @@ au BufRead,BufNewFile *.h setlocal filetype=cpp
 " taglist
 inoremap <F11> <ESC>:TlistToggle<CR>
 noremap <F11> :TlistToggle<CR>
-let Tlist_Auto_Highlight_Tag = 0
+let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Use_Right_Window = 1
 let Tlist_Auto_Update = 1
 let Tlist_Exit_OnlyWindow = 1
-let Tlist_WinWidth=70
+let Tlist_WinWidth=50
 let Tlist_Show_One_File = 0
-let Tlist_Inc_Winwidth = 0
-let Tlist_Close_On_Select = 1
+let Tlist_Inc_Winwidth = 1
+let Tlist_Close_On_Select = 0
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Compact_Format = 1
 let Tlist_Sort_Type = "name"
@@ -77,14 +77,16 @@ let Tlist_Sort_Type = "name"
 " General global shortcuts
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 noremap <Leader>tt <ESC>:tabnew<CR>
+noremap <Leader>bb <ESC>:bdelete<CR>
+noremap <Leader>pp <ESC>:YRShow<CR>
 
 
 " Plugin settings
 let g:proj_flags="cgLsStmv"    " Project.vim settings
 let g:vimwiki_list = [{'path': '~/Dropbox/masterwiki/', 'path_html': '~/Dropbox/html_masterwiki/', 'auto_export': 1}, {'path': '~/Dropbox/personalwiki/', 'path_html': '~/Dropbox/html_personalwiki/', 'auto_export': 1}]
 
-map <Leader>dec<CR> <C-x>
-map <Leader>inc<CR> <C-a>
+"map <Leader>dec<CR> <C-x>
+"map <Leader>inc<CR> <C-a>
 
 
 " FuzzyFinder
@@ -113,5 +115,9 @@ set undofile
 set undodir=~/.vim/undodir
 "au BufRead * rundo
 "au BufWritePost * wundo
+
+if v:version >= 703
+    set colorcolumn=80
+endif
 
 call pathogen#runtime_append_all_bundles()

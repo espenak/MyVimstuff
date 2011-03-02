@@ -122,6 +122,10 @@ else
    hi NonText         guifg=#BCBCBC guibg=#232526
 end
 
+if v:version >= 703
+    highlight ColorColumn ctermbg=lightgrey guibg=#222222
+endif
+
 "
 " Support for 256-color terminal
 "
