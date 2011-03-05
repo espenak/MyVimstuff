@@ -23,7 +23,8 @@ set smarttab
 set expandtab
 set laststatus=2           " Show filename and cursor position at the bottom of the screen
 set wildmenu " turn on wild menu, try typing :h and press <Tab>
-set switchbuf=newtab,usetab " Things that switch buffers, like quickfix will open new tabs, but reuse already open tabs.
+"set switchbuf=newtab,usetab " Things that switch buffers, like quickfix will open new tabs, but reuse already open tabs.
+set switchbuf=useopen,split
 set nowrap
 
 set statusline=%#Identifier#%{winnr()}\             " window number
