@@ -24,6 +24,14 @@ set expandtab
 set laststatus=2           " Show filename and cursor position at the bottom of the screen
 set wildmenu " turn on wild menu, try typing :h and press <Tab>
 set switchbuf=newtab,usetab " Things that switch buffers, like quickfix will open new tabs, but reuse already open tabs.
+set nowrap
+
+set statusline=%#Identifier#%{winnr()}\             " window number
+set statusline+=%*                                  " Switch back to normal statusline highlight
+set statusline+=%f
+set statusline+=%#Comment#\ %r%q%m                  " [RO][Quickfix][modified]
+set statusline+=%#Comment#\ (\%L\ lines)[%l:%c]\    " Lines in file, lineno, colno
+set statusline+=%*                                  " Switch back to normal statusline highlight
 
 
 " Tell vim to remember certain things when we exit
@@ -33,6 +41,14 @@ set switchbuf=newtab,usetab " Things that switch buffers, like quickfix will ope
 "  %    : 	saves and restores the buffer list
 "  n... : 	where to save the viminfo files
 set viminfo='50,\"100,:20,%,n~/.viminfo
+
+set winminheight=0
+set winheight=10
+set winminheight=10
+"au WinEnter * set winheight=10
+" I want to be able to see the other windows when using CTRL-W _ !
+"set winheight=10
+
 
 
 " Filetypes
@@ -79,6 +95,7 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 noremap <Leader>tt <ESC>:tabnew<CR>
 noremap <Leader>bb <ESC>:bdelete<CR>
 noremap <Leader>pp <ESC>:YRShow<CR>
+command! -complete=help -nargs=1 H tab help <args>
 
 
 " Plugin settings

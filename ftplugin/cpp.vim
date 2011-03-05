@@ -24,6 +24,3 @@ EOF
 
 setlocal foldmethod=syntax
 py foldlevelExceptNamespaces()
-
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
-vnoremap <Space> zf

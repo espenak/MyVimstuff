@@ -31,3 +31,9 @@ map <Leader>in :call g:AstyleIndentCurrentBuffer(b:AstyleOptions)<CR>
 map <Leader>rin :call g:AstyleIndentDirRecursive(b:AstyleOptions, b:AstyleFilePatt)<CR>
 
 call g:SetupCmakehelpers()
+
+setlocal foldmethod=syntax
+setlocal foldlevel=0
+setlocal foldnestmax=1
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
+vnoremap <Space> zf

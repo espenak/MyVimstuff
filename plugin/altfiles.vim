@@ -7,7 +7,7 @@ class AlternateFiles(object):
 	def __init__(self, openInTab=False):
 		self.openInTab = openInTab
 		self.header_ext = (".h", ".hpp", ".hxx")
-		self.source_ext = (".c", ".cxx", ".cpp", ".cc", ".C")
+		self.source_ext = (".c", ".cxx", ".cpp", ".cc", ".C", ".cu", ".cl")
 
 	def _error(self, msg):
 		print >> sys.stderr, msg
