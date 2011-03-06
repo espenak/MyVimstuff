@@ -12,5 +12,6 @@ def open_cmakelists(editcmd):
 EOF
 
 fun! g:SetupCmakehelpers()
-	nnoremap <Leader>cm :py open_cmakelists("tabedit")<CR>
+	nnoremap <Leader>cm :py open_cmakelists("sbuffer")<CR>
+	"nnoremap <Leader>cmt :py open_cmakelists("tabedit")<CR>
 endfun

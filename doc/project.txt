@@ -6,7 +6,7 @@
 				By Aric Blumer
 		      aricvim email-at-sign charter.net
 
-						    *project* *project-plugin*
+						    *project-plugin*
 	Contents:
 
 		Commands...................|project-invoking|

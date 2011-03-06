@@ -138,4 +138,5 @@ if v:version >= 703
     set colorcolumn=80
 endif
 
+call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
