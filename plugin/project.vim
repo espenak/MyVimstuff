@@ -1201,7 +1201,7 @@ function! s:Project(filename) " <<<
         nmap     <buffer> <silent> <2-RightMouse> <space>
         nmap     <buffer> <silent> <3-RightMouse> <space>
         nmap     <buffer> <silent> <4-RightMouse> <space>
-        nnoremap <buffer> <silent> <space>  \|:silent exec 'vertical resize '.(match(g:proj_flags, '\Ct')!=-1 && winwidth('.') > g:proj_window_width?(g:proj_window_width):(winwidth('.') + g:proj_window_increment))<CR>
+        nnoremap <buffer> <silent> <C-space>  \|:silent exec 'vertical resize '.(match(g:proj_flags, '\Ct')!=-1 && winwidth('.') > g:proj_window_width?(g:proj_window_width):(winwidth('.') + g:proj_window_increment))<CR>
         nnoremap <buffer> <silent> <C-Up>   \|:silent call <SID>MoveUp()<CR>
         nnoremap <buffer> <silent> <C-Down> \|:silent call <SID>MoveDown()<CR>
         nmap     <buffer> <silent> <LocalLeader><Up> <C-Up>

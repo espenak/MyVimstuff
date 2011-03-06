@@ -138,5 +138,12 @@ if v:version >= 703
     set colorcolumn=80
 endif
 
+
+function! FoldWithSpaces()
+    nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
+    vnoremap <Space> zf
+endfunction
+au BufEnter *.vimprojects call FoldWithSpaces()
+
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
