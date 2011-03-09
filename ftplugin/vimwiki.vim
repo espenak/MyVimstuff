@@ -382,3 +382,8 @@ if VimwikiGet('auto_export')
 endif
 
 " AUTOCOMMANDS }}}
+
+
+
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
+vnoremap <Space> zf

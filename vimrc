@@ -102,6 +102,9 @@ command! -complete=help -nargs=1 H tab help <args>
 " Plugin settings
 let g:proj_flags="cgLsStmv"    " Project.vim settings
 let g:vimwiki_list = [{'path': '~/Dropbox/masterwiki/', 'path_html': '~/Dropbox/html_masterwiki/', 'auto_export': 1}, {'path': '~/Dropbox/personalwiki/', 'path_html': '~/Dropbox/html_personalwiki/', 'auto_export': 1}]
+let g:vimwiki_folding = 1
+let g:vimwiki_fold_lists = 1
+let g:vimwiki_fold_trailing_empty_lines = 1
 
 "map <Leader>dec<CR> <C-x>
 "map <Leader>inc<CR> <C-a>
@@ -147,3 +150,4 @@ au BufEnter *.vimprojects call FoldWithSpaces()
 
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+
