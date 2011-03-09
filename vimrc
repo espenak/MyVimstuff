@@ -127,10 +127,6 @@ let EasyGrepRecursive=1
 let g:jah_Quickfix_Win_Height=20
 map <Leader>qq :QFix<CR>
 
-" C-space to toggle escape
-nnoremap <C-space> a
-imap <C-space> <Esc>
-
 
 set undofile
 set undodir=~/.vim/undodir
