@@ -1,3 +1,5 @@
+" author: Espen Angell Kristiansen <post@espenak.net>
+
 function! g:AstyleIndentCurrentBuffer(astyleOpts)
 	exec("%!astyle " . a:astyleOpts)
 endfunction

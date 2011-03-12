@@ -1,5 +1,7 @@
+" author: Espen Angell Kristiansen <post@espenak.net>
+
 function! g:WideWidow()
-    set columns=172
+    set columns=182
     exe "normal \<c-w>\="
 endfunction
 

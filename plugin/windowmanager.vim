@@ -1,3 +1,5 @@
+" author: Espen Angell Kristiansen <post@espenak.net>
+
 function! b:WindowFocus()
     set winminheight=0
     set winheight=1

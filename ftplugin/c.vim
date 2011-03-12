@@ -5,7 +5,7 @@ setlocal textwidth=79
 setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
 setlocal complete-=i  " This seems to speed completion up a lot!
 setlocal nowrap
-set makeprg=make\ -C\ ../build\ -j10
+setlocal makeprg=make\ -C\ build\ -j10
 
 " ctags
 let g:CtagsHelperCtagsOpts = "--c++-kinds=+p --fields=+iaS --extra=+q"
@@ -15,15 +15,7 @@ setlocal tabstop=4
 setlocal cindent
 setlocal expandtab
 setlocal cinoptions+=(0
-let g:UncrustifyIndentFile= "allman.cfg"
-
 call g:BracketMap()
-
-let g:clang_complete_auto=1
-let g:clang_hl_errors=1
-let g:clang_periodic_quickfix=1
-let g:clang_snippets=1
-
 
 let b:AstyleOptions = "--style=allman --indent-namespaces --indent-classes --indent-cases"
 let b:AstyleFilePatt = '"*.cc" "*.h"'
@@ -32,8 +24,26 @@ map <Leader>rin :call g:AstyleIndentDirRecursive(b:AstyleOptions, b:AstyleFilePa
 
 call g:SetupCmakehelpers()
 
-setlocal foldmethod=syntax
-setlocal foldlevel=0
-setlocal foldnestmax=1
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
-vnoremap <Space> zf
+" Calculate foldlevel by counting namespaces
+python << EOF
+import vim
+
+def countNamespaces():
+    namespaces = 0
+    for line in vim.current.buffer:
+        if "namespace" in line and not "}" in line and not "using" in line:
+            namespaces += 1
+    return namespaces
+
+def foldlevelExceptNamespaces():
+    foldlevel = countNamespaces()
+    name = vim.current.buffer.name
+    ext = name.rsplit(".", 1)[1]
+    if ext in ('h', 'hpp', 'hh', 'H'):
+        foldlevel += 1
+    vim.command("set foldlevel=%d" % foldlevel)
+    vim.command("set foldnestmax=%d" % (foldlevel+1))
+EOF
+set foldmethod=syntax
+py foldlevelExceptNamespaces()
+call g:foldWithSpace()

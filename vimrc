@@ -24,8 +24,8 @@ set expandtab
 set laststatus=2           " Show filename and cursor position at the bottom of the screen
 set wildmenu " turn on wild menu, try typing :h and press <Tab>
 "set switchbuf=newtab,usetab " Things that switch buffers, like quickfix will open new tabs, but reuse already open tabs.
-set switchbuf=useopen,split
-set nowrap
+set switchbuf=useopen,split  " Things that switch buffers, like quickfix will open new windows, but reuse already open windows.
+set nowrap                   " Don't wrap text
 
 set statusline=%#Identifier#%{winnr()}\             " window number
 set statusline+=%*                                  " Switch back to normal statusline highlight
@@ -33,6 +33,16 @@ set statusline+=%f
 set statusline+=%#Comment#\ %r%q%m                  " [RO][Quickfix][modified]
 set statusline+=%#Comment#\ (\%L\ lines)[%l:%c]\    " Lines in file, lineno, colno
 set statusline+=%*                                  " Switch back to normal statusline highlight
+
+
+" Stuff that only works in 7.3 and greater
+if v:version >= 703
+    set colorcolumn=80
+
+    " Make vim keep undo history in ~/.vim/undodir
+    set undofile
+    set undodir=~/.vim/undodir
+endif
 
 
 " Tell vim to remember certain things when we exit
@@ -43,14 +53,9 @@ set statusline+=%*                                  " Switch back to normal stat
 "  n... : 	where to save the viminfo files
 set viminfo='50,\"100,:20,%,n~/.viminfo
 
-set winminheight=0
-set winheight=10
-set winminheight=10
-"au WinEnter * set winheight=10
-" I want to be able to see the other windows when using CTRL-W _ !
+"set winminheight=0
 "set winheight=10
-
-
+"set winminheight=10
 
 " Filetypes
 au BufRead,BufNewFile *.rst setlocal filetype=txt
@@ -59,7 +64,6 @@ au BufRead,BufNewFile README setlocal filetype=txt
 au BufRead,BufNewFile INSTALL setlocal filetype=txt
 au BufRead,BufNewFile TODO setlocal filetype=txt
 au BufRead,BufNewFile BUGS setlocal filetype=txt
-au BufRead,BufNewFile *.h setlocal filetype=cpp.doxygen
 au BufRead,BufNewFile *.mkd setlocal filetype=mkd
 au BufRead,BufNewFile *.md setlocal filetype=mkd
 au BufRead,BufNewFile *.zcml setlocal filetype=xml
@@ -74,7 +78,7 @@ au BufRead,BufNewFile *.h setlocal filetype=cpp
 
 
 
-" taglist
+" Configure taglist plugin
 inoremap <F11> <ESC>:TlistToggle<CR>
 noremap <F11> :TlistToggle<CR>
 let Tlist_Auto_Highlight_Tag = 1
@@ -98,17 +102,11 @@ noremap <Leader>bb <ESC>:bdelete<CR>
 noremap <Leader>pp <ESC>:YRShow<CR>
 command! -complete=help -nargs=1 H tab help <args>
 
-
-" Plugin settings
-let g:proj_flags="cgLsStmv"    " Project.vim settings
+" Vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/masterwiki/', 'path_html': '~/Dropbox/html_masterwiki/', 'auto_export': 1}, {'path': '~/Dropbox/personalwiki/', 'path_html': '~/Dropbox/html_personalwiki/', 'auto_export': 1}]
 let g:vimwiki_folding = 1
 let g:vimwiki_fold_lists = 1
 let g:vimwiki_fold_trailing_empty_lines = 1
-
-"map <Leader>dec<CR> <C-x>
-"map <Leader>inc<CR> <C-a>
-
 
 " FuzzyFinder
 map <Leader>ff :FufFile<CR>
@@ -116,7 +114,6 @@ map <Leader>fg :FufFile **/<CR>
 map <Leader>fdg :FufDir **/<CR>
 let g:fuf_dir_exclude='\v(^|[/\\])(\.hg|\.git|\.bzr|build)($|[/\\])'
 let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp|DS_Store)$|(^|[/\\])(\.hg|\.git|\.bzr|build)($|[/\\])'
-
 
 " Easygrep
 let EasyGrepMode=2
@@ -128,22 +125,12 @@ let g:jah_Quickfix_Win_Height=20
 map <Leader>qq :QFix<CR>
 
 
-set undofile
-set undodir=~/.vim/undodir
-"au BufRead * rundo
-"au BufWritePost * wundo
 
-if v:version >= 703
-    set colorcolumn=80
-endif
+" Project.vim settings
+let g:proj_flags="cgLsStmv"
+au BufEnter *.vimprojects call g:foldWithSpaces()
 
 
-function! FoldWithSpaces()
-    nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
-    vnoremap <Space> zf
-endfunction
-au BufEnter *.vimprojects call FoldWithSpaces()
-
+" Autoimport plugins in ~/.vim/bundle/
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
-

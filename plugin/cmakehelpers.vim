@@ -1,3 +1,5 @@
+" author: Espen Angell Kristiansen <post@espenak.net>
+
 python << EOF
 import vim
 from os.path import join, dirname
