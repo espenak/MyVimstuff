@@ -125,10 +125,9 @@ let g:jah_Quickfix_Win_Height=20
 map <Leader>qq :QFix<CR>
 
 
-
 " Project.vim settings
 let g:proj_flags="cgLsStmv"
-au BufEnter *.vimprojects call g:foldWithSpaces()
+au BufEnter *.vimprojects call g:foldWithSpace()
 
 
 " Autoimport plugins in ~/.vim/bundle/
