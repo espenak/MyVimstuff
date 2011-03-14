@@ -27,10 +27,12 @@ set wildmenu " turn on wild menu, try typing :h and press <Tab>
 set switchbuf=useopen,split  " Things that switch buffers, like quickfix will open new windows, but reuse already open windows.
 set nowrap                   " Don't wrap text
 
+" Statusline is the line at the bottom of the screen, showing filename and
+" other info.
 set statusline=%#Identifier#%{winnr()}\             " window number
 set statusline+=%*                                  " Switch back to normal statusline highlight
 set statusline+=%f
-set statusline+=%#Comment#\ %r%q%m                  " [RO][Quickfix][modified]
+set statusline+=%#Comment#\ %r%m                    " [RO][modified]
 set statusline+=%#Comment#\ (\%L\ lines)[%l:%c]\    " Lines in file, lineno, colno
 set statusline+=%*                                  " Switch back to normal statusline highlight
 

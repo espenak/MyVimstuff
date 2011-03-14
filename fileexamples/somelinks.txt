@@ -1,2 +1,3 @@
-
 http://www.example.com
+v://~/.vimrc
+file://~/.vimrc

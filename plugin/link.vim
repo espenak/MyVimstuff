@@ -1,22 +1,28 @@
 " Simple plugin to open a link on the current line. Made this because utl.vim
 " seems to be unmaintained, and it had issues with some urls.
 " 
-" This has only been tested on OSX for now, but you should only have to
-" change the linkOpeners to make it work in another OS. Note that the
-" 'open'-command in OSX opens the url with the default application, so
-" xdg-open should work on Ubuntu.
-"
 " author: Espen Angell Kristiansen <post@espenak.net>
 "
 "
 " Configuration
 " --------------------------
 " Add something like this to vimrc:
-"     linkOpeners = dict(
-"        http = "open %(url)s",
-"        v = "vim tabedit %(path)s",
-"        file = "open %(path)s"
-"     )
+"    python << EOF
+"    import platform
+"    os = platform.uname()[0]
+"    if os == "Linux":
+"        linkOpeners = dict(
+"            http = "xdg-open %(url)s",
+"            v = "vim tabedit %(path)s",
+"            file = "xdg-open %(path)s"
+"        )
+"    elif os == "Darwin": # Mac OSX
+"        linkOpeners = dict(
+"            http = "open %(url)s",
+"            v = "vim tabedit %(path)s",
+"            file = "open %(path)s"
+"        )
+"    EOF
 " Available template vars:
 "   - urlype (http, file, ...)
 "   - path   (/this/is/my/file.txt, www.example.com/my/test, ...)
