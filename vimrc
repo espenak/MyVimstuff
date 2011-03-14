@@ -130,6 +130,24 @@ let g:proj_flags="cgLsStmv"
 au BufEnter *.vimprojects call g:foldWithSpace()
 
 
+python << EOF
+import platform
+os = platform.uname()[0]
+if os == "Linux":
+    linkOpeners = dict(
+        http = "xdg-open %(url)s",
+        v = "vim tabedit %(path)s",
+        file = "xdg-open %(path)s"
+    )
+elif os == "Darwin": # Mac OSX
+    linkOpeners = dict(
+        http = "open %(url)s",
+        v = "vim tabedit %(path)s",
+        file = "open %(path)s"
+    )
+EOF
+
+
 " Autoimport plugins in ~/.vim/bundle/
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
