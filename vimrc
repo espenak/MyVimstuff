@@ -132,6 +132,7 @@ let g:proj_flags="cgLsStmv"
 au BufEnter *.vimprojects call g:foldWithSpace()
 
 
+" Settings for the link plugin
 python << EOF
 import platform
 os = platform.uname()[0]
