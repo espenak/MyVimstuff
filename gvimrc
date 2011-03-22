@@ -24,6 +24,8 @@ endif
 
 
 colorscheme molokai
+"set background=light
+"colorscheme default
 
 if filereadable(expand("~/.vim/gvimrc.local"))
 	source ~/.vim/gvimrc.local
