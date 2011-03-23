@@ -39,7 +39,7 @@ set statusline+=%*                                  " Switch back to normal stat
 
 " Stuff that only works in 7.3 and greater
 if v:version >= 703
-    set colorcolumn=80
+    "set colorcolumn=80
 
     " Make vim keep undo history in ~/.vim/undodir
     set undofile
