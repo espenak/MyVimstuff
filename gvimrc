@@ -23,7 +23,7 @@ if exists('&macatsui')
 endif
 
 
-colorscheme molokai
+"colorscheme molokai
 "set background=light
 "colorscheme default
 

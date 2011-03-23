@@ -151,15 +151,6 @@ elif os == "Darwin": # Mac OSX
 EOF
 
 
-" LaTeX suite
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-let g:Tex_ViewRuleComplete_dvi = 'open $*.dvi'
-let g:Tex_ViewRuleComplete_pdf = 'open -a Skim $*.pdf'
-let g:Tex_ViewRuleComplete_ps = 'open $*.ps'
-let g:Tex_DefaultTargetFormat = 'pdf'
-
-
 " Autoimport plugins in ~/.vim/bundle/
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
