@@ -111,12 +111,20 @@ let g:vimwiki_folding = 1
 let g:vimwiki_fold_lists = 1
 let g:vimwiki_fold_trailing_empty_lines = 1
 
+function g:fuzzyFindFile()
+    exec("FufRenewCache")
+    exec("FufFile **/")
+endfunction
+function g:fuzzyFindDir()
+    exec("FufRenewCache")
+    exec("FufDir **/")
+endfunction
+
 " FuzzyFinder
-map <Leader>ff :FufFile<CR>
-map <Leader>fg :FufFile **/<CR>
-map <Leader>fdg :FufDir **/<CR>
+map <Leader>fg :call g:fuzzyFindFile()<CR>
+map <Leader>fdg :call g:fuzzyFindDir()<CR>
 let g:fuf_dir_exclude='\v(^|[/\\])(\.hg|\.git|\.bzr|build)($|[/\\])'
-let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp|DS_Store)$|(^|[/\\])(\.hg|\.git|\.bzr|build)($|[/\\])'
+let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp|DS_Store|html|png|gif|jpg)$|(^|[/\\])(\.hg|\.git|\.bzr|build)($|[/\\])'
 
 " Easygrep
 let EasyGrepMode=2

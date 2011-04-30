@@ -6,13 +6,13 @@ function! g:BracketMap()
 	inoremap {{     {
 	inoremap }}     }<ESC>i{<ESC>2la
 
-	inoremap (      ()<Left>
-	inoremap (<CR>  (<CR>)<Esc>I
-	inoremap ((     (
-	inoremap ()     ()
+	"inoremap (      ()<Left>
+	"inoremap (<CR>  (<CR>)<Esc>I
+	"inoremap ((     (
+	"inoremap ()     ()
 
-	inoremap [      []<Left>
-	inoremap [<CR>  [<CR>]<Esc>I
-	inoremap [[     [
-	inoremap []     []
+	"inoremap [      []<Left>
+	"inoremap [<CR>  [<CR>]<Esc>I
+	"inoremap [[     [
+	"inoremap []     []
 endfunction
