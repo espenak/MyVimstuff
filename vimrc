@@ -112,7 +112,7 @@ let g:vimwiki_fold_lists = 1
 let g:vimwiki_fold_trailing_empty_lines = 1
 
 function g:fuzzyFindFile()
-    exec("FufRenewCache")
+    "exec("FufRenewCache")
     exec("FufFile **/")
 endfunction
 function g:fuzzyFindDir()
