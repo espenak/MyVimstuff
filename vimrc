@@ -60,7 +60,7 @@ set viminfo='50,\"100,:20,%,n~/.viminfo
 "set winminheight=10
 
 " Filetypes
-au BufRead,BufNewFile *.rst setlocal filetype=txt
+au BufRead,BufNewFile *.rst setlocal filetype=rst
 au BufRead,BufNewFile *.apt setlocal filetype=txt
 au BufRead,BufNewFile README setlocal filetype=txt
 au BufRead,BufNewFile INSTALL setlocal filetype=txt
@@ -124,7 +124,7 @@ endfunction
 map <Leader>fg :call g:fuzzyFindFile()<CR>
 map <Leader>fdg :call g:fuzzyFindDir()<CR>
 let g:fuf_dir_exclude='\v(^|[/\\])(\.hg|\.git|\.bzr|build)($|[/\\])'
-let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp|DS_Store|html|png|gif|jpg)$|(^|[/\\])(\.hg|\.git|\.bzr|build)($|[/\\])'
+let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp|DS_Store|png|gif|pyc|pyo|class|jpg)$|(^|[/\\])(\.hg|\.git|\.bzr|build)($|[/\\])'
 
 " Easygrep
 let EasyGrepMode=2

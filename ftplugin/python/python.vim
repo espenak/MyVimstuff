@@ -24,9 +24,9 @@ setlocal path +=~/src/django-trunk
 
 set iskeyword+=-
 
-highlight OverCommentLength guibg=#dddddd
-let w:m1=matchadd('OverCommentLength', '\%<80v.\%>77v', -1)
-let w:m2=matchadd('ErrorMsg', '\%>79v.\+', -1)
+"highlight OverCommentLength guibg=#dddddd
+"let w:m1=matchadd('OverCommentLength', '\%<80v.\%>77v', -1)
+"let w:m2=matchadd('ErrorMsg', '\%>79v.\+', -1)
 
 
 
