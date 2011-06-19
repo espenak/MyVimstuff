@@ -4,7 +4,7 @@ setlocal shiftwidth=4
 setlocal smarttab
 setlocal expandtab
 setlocal smartindent
-setlocal textwidth=76
+setlocal textwidth=0
 "let g:python_highlight_all=1
 let python_highlight_all=1
 
