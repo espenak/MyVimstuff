@@ -1,10 +1,10 @@
 if has("gui_macvim")
-	set guifont=Monaco:h11
+	set guifont=Monaco:h12
 	set antialias
 	command BigFont set guifont=Monaco:h18<CR>
-	command NormalFont set guifont=Monaco:h11<CR>
+	command NormalFont set guifont=Monaco:h12<CR>
 else
-set guifont=Andale\ Mono\ 10
+set guifont=Andale\ Mono\ 11
 endif
 
 
@@ -23,9 +23,12 @@ if exists('&macatsui')
 endif
 
 
-colorscheme molokai
+"colorscheme molokai
 "set background=light
 "colorscheme default
+
+set background=light
+colorscheme osx_like
 
 if filereadable(expand("~/.vim/gvimrc.local"))
 	source ~/.vim/gvimrc.local
