@@ -163,3 +163,11 @@ EOF
 " Autoimport plugins in ~/.vim/bundle/
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+
+
+if executable('/usr/local/bin/ctags')
+    let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+endif
+
+
+let python_highlight_all = 1
