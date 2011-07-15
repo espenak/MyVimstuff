@@ -104,6 +104,7 @@ noremap <Leader>tt <ESC>:tabnew<CR>
 noremap <Leader>bb <ESC>:bdelete<CR>
 noremap <Leader>pp <ESC>:YRShow<CR>
 command! -complete=help -nargs=1 H tab help <args>
+command! -nargs=0 ClearTrailingWhitespace %s/\s\+$//
 
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/masterwiki/', 'path_html': '~/Dropbox/html_masterwiki/', 'auto_export': 1}, {'path': '~/Dropbox/personalwiki/', 'path_html': '~/Dropbox/html_personalwiki/', 'auto_export': 1}]
@@ -171,3 +172,4 @@ endif
 
 
 let python_highlight_all = 1
+
