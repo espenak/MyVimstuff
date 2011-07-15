@@ -35,3 +35,6 @@ RPCService
 POSIX
 API
 PPE
+serializable
+serializer
+JSON
