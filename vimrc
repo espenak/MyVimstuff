@@ -105,6 +105,7 @@ noremap <Leader>bb <ESC>:bdelete<CR>
 noremap <Leader>pp <ESC>:YRShow<CR>
 command! -complete=help -nargs=1 H tab help <args>
 command! -nargs=0 ClearTrailingWhitespace %s/\s\+$//
+command! -nargs=0 CodeBrowseRefresh !python ~/.vim/codeprojectbrowser.py
 
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/masterwiki/', 'path_html': '~/Dropbox/html_masterwiki/', 'auto_export': 1}, {'path': '~/Dropbox/personalwiki/', 'path_html': '~/Dropbox/html_personalwiki/', 'auto_export': 1}]
