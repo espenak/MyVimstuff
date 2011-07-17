@@ -92,6 +92,10 @@ class InlcudeDirectory(Directory):
         return filteredfiles
 
 
+def iteritems_ordered(dct):
+    for key in sorted(dct.keys()):
+        yield key, dct[key]
+
 class Parser(object):
     def __init__(self, index):
         self.projects = self.parse(index)
@@ -112,19 +116,19 @@ class Parser(object):
 
     def parse(self, dct, indentlevel=0):
         projorhiddendirs = []
-        for dirlabel, value in dct.iteritems():
+        for dirlabel, value in iteritems_ordered(dct):
             projorhiddendirs += self._handle(None, dirlabel, value)
         return projorhiddendirs
 
     def handle_hiddendirectory(self, dirname, dirlabel, **items):
         projorhiddendirs = []
-        for subdirlabel, value in items.iteritems():
+        for subdirlabel, value in iteritems_ordered(items):
             projorhiddendirs += self._handle(dirname, subdirlabel, value)
         return projorhiddendirs
 
     def handle_project(self, dirname, dirlabel, **items):
         project = Project(dirname, dirlabel)
-        for subdirlabel, value in items.iteritems():
+        for subdirlabel, value in iteritems_ordered(items):
             project.subdirs.append(self._handle(dirname, subdirlabel, value))
         return [project]
 
