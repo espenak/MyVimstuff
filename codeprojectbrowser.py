@@ -5,8 +5,9 @@ from fnmatch import fnmatchcase
 
 
 class Project(object):
-    def __init__(self, dirpath):
+    def __init__(self, dirpath, dirlabel):
         self.dirpath = dirpath
+        self.dirlabel = dirlabel
         self.subdirs = []
 
     def getbasename(self):
@@ -14,8 +15,9 @@ class Project(object):
 
 
 class BaseDirectory(object):
-    def __init__(self, dirpath):
+    def __init__(self, dirpath, dirlabel):
         self.dirpath = expanduser(dirpath)
+        self.dirlabel = dirlabel
 
     def getbasename(self):
         return basename(self.dirpath)
@@ -23,7 +25,7 @@ class BaseDirectory(object):
     def ignoredir(self, dirpath, subdirs, files):
         return False
 
-    def formatdirpath(self, dirpath, subdirs, files):
+    def format_dirlabel(self, dirpath, subdirs, files):
         return dirpath
 
     def relpath(self, path):
@@ -47,13 +49,13 @@ class PythonDirectory(BaseDirectory):
     def ignoredir(self, dirpath, subdirs, files):
         return files == ['__init__.py'] or len(files) == 0
 
-    def formatdirpath(self, dirpath, subdirs, files):
+    def format_dirlabel(self, dirpath, subdirs, files):
         pypath = self.relpath(dirpath).replace(os.sep, '.')
         return pypath
 
 class Directory(BaseDirectory):
-    def __init__(self, dirpath, ignore):
-        super(Directory, self).__init__(dirpath)
+    def __init__(self, dirpath, dirlabel, ignore):
+        super(Directory, self).__init__(dirpath, dirlabel)
         self.ignore = ignore
 
     def filterfiles(self, dirpath, files):
@@ -72,45 +74,68 @@ class Directory(BaseDirectory):
         #return True
         return len(files) == 0
 
-    def formatdirpath(self, dirpath, subdirs, files):
+    def format_dirlabel(self, dirpath, subdirs, files):
         return self.relpath(dirpath)
 
+class InlcudeDirectory(Directory):
+    def __init__(self, dirpath, dirlabel, include):
+        super(Directory, self).__init__(dirpath, dirlabel)
+        self.include = include
+
+    def filterfiles(self, dirpath, files):
+        filepaths = [(self.relpath(join(dirpath, f)), f) for f in files]
+        filteredfiles = []
+        for filepath, filename in filepaths:
+            for pattern in self.include:
+                if fnmatchcase(filepath, pattern):
+                    filteredfiles.append(filename)
+        return filteredfiles
 
 
 class Parser(object):
     def __init__(self, index):
         self.projects = self.parse(index)
 
-    def _handle(self, dirname, value):
+    def _handle(self, dirname, subdirlabel, value):
         handler = getattr(self, 'handle_' + value['handler'])
         del value['handler']
-        return handler(dirname, **value)
+        if 'directory' in value:
+            subdirname = value['directory']
+            del value['directory']
+        else:
+            subdirname = subdirlabel
+        if dirname == None:
+            dirpath = subdirname
+        else:
+            dirpath = join(dirname, subdirname)
+        return handler(dirpath, subdirlabel, **value)
 
     def parse(self, dct, indentlevel=0):
         projorhiddendirs = []
-        for dirname, value in dct.iteritems():
-            projorhiddendirs += self._handle(dirname, value)
+        for dirlabel, value in dct.iteritems():
+            projorhiddendirs += self._handle(None, dirlabel, value)
         return projorhiddendirs
 
-    def handle_hiddendirectory(self, dirname, **items):
+    def handle_hiddendirectory(self, dirname, dirlabel, **items):
         projorhiddendirs = []
-        for subdirname, value in items.iteritems():
-            projorhiddendirs += self._handle(join(dirname, subdirname), value)
+        for subdirlabel, value in items.iteritems():
+            projorhiddendirs += self._handle(dirname, subdirlabel, value)
         return projorhiddendirs
 
-    def handle_project(self, dirname, **items):
-        project = Project(dirname)
-        for subdirname, value in items.iteritems():
-            project.subdirs.append(self._handle(join(dirname, subdirname), value))
+    def handle_project(self, dirname, dirlabel, **items):
+        project = Project(dirname, dirlabel)
+        for subdirlabel, value in items.iteritems():
+            project.subdirs.append(self._handle(dirname, subdirlabel, value))
         return [project]
 
-    def handle_pythonsrc(self, dirpath, layout):
-        #print dirpath, layout
-        return PythonDirectory(dirpath)
+    def handle_pythonsrc(self, dirpath, dirlabel, layout):
+        return PythonDirectory(dirpath, dirlabel)
 
-    def handle_directory(self, dirpath, ignore=[]):
-        #print dirpath, ignore
-        return Directory(dirpath, ignore)
+    def handle_directory(self, dirpath, dirlabel, ignore=[]):
+        return Directory(dirpath, dirlabel, ignore)
+
+    def handle_includedirectory(self, dirpath, dirlabel, include=[]):
+        return InlcudeDirectory(dirpath, dirlabel, include)
 
 
 
@@ -120,13 +145,13 @@ def to_projectvim_format(projects):
         entry = '{0}={1} {{'.format(project.getbasename(), project.dirpath)
         result.append(entry)
         for projsubdir in project.subdirs:
-            entry = ' {0}={1} {{'.format(projsubdir.getbasename(), projsubdir.getbasename())
+            entry = ' {0}={1} {{'.format(projsubdir.dirlabel, projsubdir.getbasename())
             result.append(entry)
             for dirpath, subdirs, files in os.walk(projsubdir.dirpath):
                 files = projsubdir.filterfiles(dirpath, files)
                 if projsubdir.ignoredir(dirpath, subdirs, files):
                     continue
-                dirlabel = projsubdir.formatdirpath(dirpath, subdirs, files)
+                dirlabel = projsubdir.format_dirlabel(dirpath, subdirs, files)
                 dirrelpath = projsubdir.relpath(dirpath)
                 entry = '  {0}={1} {{'.format(dirlabel, dirrelpath)
                 result.append(entry)
