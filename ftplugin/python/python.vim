@@ -22,7 +22,7 @@ let python_highlight_all=1
 setlocal path +=~/src/django-trunk
 
 
-set iskeyword+=-
+setlocal iskeyword+=-
 
 "highlight OverCommentLength guibg=#dddddd
 "let w:m1=matchadd('OverCommentLength', '\%<80v.\%>77v', -1)
