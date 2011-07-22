@@ -19,7 +19,6 @@ else
 	ru! indent/javascript.vim
 endif
 
-echo "Sourcing html indent"
 
 
 " [-- local settings (must come before aborting the script) --]
