@@ -174,4 +174,4 @@ endif
 
 
 let python_highlight_all = 1
-
+runtime devilrysettings.vim
