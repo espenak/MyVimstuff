@@ -175,3 +175,8 @@ endif
 
 let python_highlight_all = 1
 runtime devilrysettings.vim
+
+
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+let g:gist_browser_command = 'open %URL%'
