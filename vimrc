@@ -26,6 +26,7 @@ set wildmenu " turn on wild menu, try typing :h and press <Tab>
 "set switchbuf=newtab,usetab " Things that switch buffers, like quickfix will open new tabs, but reuse already open tabs.
 set switchbuf=useopen,split  " Things that switch buffers, like quickfix will open new windows, but reuse already open windows.
 set nowrap                   " Don't wrap text
+set hlsearch                 " Highlight search results
 
 " Statusline is the line at the bottom of the screen, showing filename and
 " other info.
