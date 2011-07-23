@@ -15,5 +15,5 @@ function! b:WindowOverview()
     exe "normal \<c-w>\_"
 endfunction
 
-noremap <Leader>ff :call b:WindowFocus()<CR>
+noremap <Leader><Leader>o :call b:WindowFocus()<CR>
 noremap <Leader>o :call b:WindowOverview()<CR>

@@ -101,8 +101,8 @@ let Tlist_Sort_Type = "name"
 
 " General global shortcuts
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-noremap <Leader>tt <ESC>:tabnew<CR>
-noremap <Leader>bb <ESC>:bdelete<CR>
+nnoremap <Leader>rs :%s/\<<C-r><C-w>\>/<C-r><C-w>
+noremap <Leader>nt <ESC>:tabnew<CR>
 noremap <Leader>pp <ESC>:YRShow<CR>
 command! -complete=help -nargs=1 H tab help <args>
 command! -nargs=0 ClearTrailingWhitespace %s/\s\+$//

@@ -1,12 +1,14 @@
 " author: Espen Angell Kristiansen <post@espenak.net>
 
 function! g:WideWidow()
-    set columns=182
+    set columns=200
+    set lines=70
     exe "normal \<c-w>\="
 endfunction
 
 function! g:NoWideWindow()
-    set columns=92
+    set columns=100
+    set lines=70
     exe "normal \<c-w>\="
 endfunction
 
