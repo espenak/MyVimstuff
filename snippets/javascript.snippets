@@ -38,3 +38,11 @@ snippet cfg
 	 * ${4}
 	 */
 	${1}: ${2:undefined}${3}
+snippet init
+
+	initComponent: function() {
+	    Ext.apply(this, {
+			${2}
+	    });
+	    this.callParent(arguments);
+	}${1}
