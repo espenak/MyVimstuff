@@ -41,3 +41,13 @@ map <S-g> :tab split<CR>:exec("cscope find c ".expand("<cword>"))<CR>
 
 let g:CtagsHelperCtagsOpts = "--python-kinds=-i"
 let Tlist_Show_One_File = 1
+
+
+
+set statusline=%#Identifier#%{winnr()}\             " window number
+set statusline+=%*                                  " Switch back to normal statusline highlight
+set statusline+=%f
+set statusline+=%#Comment#\ %r%m                    " [RO][modified]
+set statusline+=%#Comment#\ (\%L\ lines)[%l:%c]\    " Lines in file, lineno, colno
+set statusline+=%*                                  " Switch back to normal statusline highlight
+set statusline+=\ %{TagInStatusLine()}

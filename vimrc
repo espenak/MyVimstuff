@@ -181,3 +181,7 @@ runtime devilrysettings.vim
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_browser_command = 'open %URL%'
+
+if filereadable(expand("~/.vim/vimrc.local"))
+	source ~/.vim/vimrc.local
+endif
