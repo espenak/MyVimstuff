@@ -80,6 +80,7 @@ au BufNewFile,BufRead *.cl setlocal filetype=opencl
 au BufRead,BufNewFile *.json setlocal filetype=json
 au BufRead,BufNewFile *.h setlocal filetype=cpp
 au BufRead,BufNewFile *.tex setlocal filetype=tex
+au BufRead,BufNewFile *.kdl setlocal filetype=yaml
 
 
 
