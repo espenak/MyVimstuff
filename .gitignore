@@ -6,3 +6,8 @@ gvimrc.local
 .netrwhist
 sessions/
 undodir/
+ruby/command-t/*.o
+ruby/command-t/*.log
+ruby/command-t/*.so
+ruby/command-t/Makefile
+ruby/command-t/ext.bundle

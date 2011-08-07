@@ -5,7 +5,7 @@ if has("gui_macvim")
 	command BigFont set guifont=Monaco:h14<CR>
 	command NormalFont set guifont=Monaco:h12<CR>
 else
-    set guifont=Andale\ Mono\ 12
+    set guifont=Andale\ Mono\ 10
 endif
 
 
