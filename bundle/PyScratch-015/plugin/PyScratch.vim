@@ -97,8 +97,8 @@ function! DoCommand()
 	return g:result
 endfunction
 
-nmap <CR> :call CRForPy()<cr>
-imap <CR> <c-r>=CRForPyI()<cr>
-vmap <c-cr> :call VisualPyCommand()<cr>
+nmap <c-m-CR> :call CRForPy()<cr>
+imap <c-m-CR> <c-r>=CRForPyI()<cr>
+vmap <c-s-CR> :call VisualPyCommand()<cr>
 syn region PyErr start='^Error detected while' end='^\S\+Error:.*$'
 hi PyErr guifg=red
