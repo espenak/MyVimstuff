@@ -44,6 +44,6 @@ def foldlevelExceptNamespaces():
     vim.command("set foldlevel=%d" % foldlevel)
     vim.command("set foldnestmax=%d" % (foldlevel+1))
 EOF
-setlocal foldmethod=syntax
-py foldlevelExceptNamespaces()
-call g:foldWithSpace()
+"setlocal foldmethod=syntax
+"py foldlevelExceptNamespaces()
+"call g:foldWithSpace()

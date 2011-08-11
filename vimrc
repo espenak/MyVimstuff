@@ -81,6 +81,7 @@ au BufRead,BufNewFile *.json setlocal filetype=json
 au BufRead,BufNewFile *.h setlocal filetype=cpp
 au BufRead,BufNewFile *.tex setlocal filetype=tex
 au BufRead,BufNewFile *.kdl setlocal filetype=yaml
+au BufRead,BufNewFile *.klg setlocal filetype=cpp
 
 
 
@@ -144,6 +145,10 @@ map <Leader>qq :QFix<CR>
 " Project.vim settings
 let g:proj_flags="cgLsStmv"
 au BufEnter *.vimprojects call g:foldWithSpace()
+
+" Command-t settings
+let g:CommandTMaxHeight=10
+let g:CommandTMatchWindowReverse=1
 
 
 " Settings for the link plugin
