@@ -1,12 +1,3 @@
-# Function
-snippet fun
-	function ${1:function_name} (${2:argument}) {
-		${3:// body...}
-	}
-# Anonymous Function
-snippet f
-	function(${1}) {${2}};
-# if
 snippet if
 	if(${1:true}) {
 		${2}
@@ -26,7 +17,39 @@ snippet :f
 snippet each
 	Ext.each(${1:loopvar}, function(${2:value}, ${3:index}) {
 		${4}
-	});
+	}, this);
+snippet onf
+	this.on('${1:event}', function() {
+		${2}
+	}, this);
+snippet on
+	this.on('${1:event}', this.${2}, this);
+snippet lis
+	listeners: {
+		scope: this,
+		${1}
+	}
+snippet wid
+	extend: 'Ext.${1:panel.Panel}',
+	alias: 'widget.${2}',
+
+	config: {
+	},
+	
+	constructor: function(config) {
+	    this.initConfig(config);
+	    this.callParent([config]);
+	},
+
+	initComponent: function() {
+	    Ext.apply(this, {
+	    });
+	    this.callParent(arguments);
+	}
+snippet conf
+	config: {
+		$1{}
+	},
 snippet con
 	constructor: function(config) {
 	    this.initConfig(config);
@@ -47,3 +70,9 @@ snippet init
 	}${1}
 snippet log
 	console.log(${1});
+snippet logh
+	console.log('hei');
+
+snippet xte
+	Ext.create('Ext.XTemplate',
+	    ${1}
