@@ -82,6 +82,7 @@ au BufRead,BufNewFile *.h setlocal filetype=cpp
 au BufRead,BufNewFile *.tex setlocal filetype=tex
 au BufRead,BufNewFile *.kdl setlocal filetype=yaml
 au BufRead,BufNewFile *.klg setlocal filetype=cpp
+au BufRead,BufNewFile *.less setlocal filetype=less
 
 
 
