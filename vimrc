@@ -192,3 +192,38 @@ let g:gist_browser_command = 'open %URL%'
 if filereadable(expand("~/.vim/vimrc.local"))
 	source ~/.vim/vimrc.local
 endif
+
+
+function GuiTabLabel()
+    let label = ''
+    let bufnrlist = tabpagebuflist(v:lnum)
+
+    " Add '+' if one of the buffers in the tab page is modified
+    for bufnr in bufnrlist
+        if getbufvar(bufnr, "&modified")
+            let label = '+'
+            break
+        endif
+    endfor
+
+    " Append the number of windows in the tab page if more than one
+    let wincount = tabpagewinnr(v:lnum, '$')
+    if wincount > 1
+        let label .= wincount
+    endif
+    if label != ''
+        let label .= ' '
+    endif
+
+    "let curBufName = bufname(bufnrlist[tabpagewinnr(v:lnum) - 1])
+    let curDirName = expand("%:h:t")
+    let curFileName = expand("%:t")
+    if curDirName != expand("%:h")
+        let curDirName = '#' . curDirName
+    endif
+
+    " Append the buffer name
+    return label . curDirName . '/' . curFileName
+endfunction
+
+au BufRead,BufNewFile *.js set guitablabel=%{GuiTabLabel()}

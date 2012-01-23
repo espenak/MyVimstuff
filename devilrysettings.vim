@@ -1,2 +1,2 @@
 set wildignore+=*.pyc
-set wildignore+=*/extjshelpers/extjs/*
+"set wildignore+=*/extjshelpers/extjs/*
