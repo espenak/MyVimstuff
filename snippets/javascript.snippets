@@ -21,11 +21,11 @@ snippet ieach
 		${3}
 	}
 snippet aeach
-	Array.each(${1:loopvar}, function(${2:value}, ${3:index}) {
+	Ext.Array.each(${1:loopvar}, function(${2:value}, ${3:index}) {
 		${4}
 	}, this);
 snippet oeach
-	Object.each(${1:loopvar}, function(${2:value}, ${3:key}) {
+	Ext.Object.each(${1:loopvar}, function(${2:value}, ${3:key}) {
 		${4}
 	}, this);
 
@@ -68,10 +68,9 @@ snippet con
 	},
 snippet cfg
 	/**
-	 * @cfg
-	 * ${4}
+	 * @cfg {${1:Object}} ${2:config}
+	 * ${3:help}
 	 */
-	${1}: ${2:undefined}${3}
 snippet init
 	initComponent: function() {
 	    Ext.apply(this, {
