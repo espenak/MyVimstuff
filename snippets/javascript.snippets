@@ -87,3 +87,22 @@ snippet xte
 	Ext.create('Ext.XTemplate',
 	    ${2}
 	)${1:,}
+
+
+snippet tif
+	'<tpl if="${1}">',
+		${3},
+	'</tpl>'${2:,}
+
+snippet telse
+	'<tpl else>',
+		${1},
+
+snippet telif
+	'<tpl elseif="${1}">',
+		${2},
+
+snippet tfor
+	'<tpl for="${1}">',
+		${3},
+	'</tpl>'${2:,}
