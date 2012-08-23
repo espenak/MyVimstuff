@@ -80,29 +80,33 @@ snippet init
 	}${1}
 snippet log
 	console.log(${1});
-snippet logh
-	console.log('hei');
-
 snippet xte
 	Ext.create('Ext.XTemplate',
 	    ${2}
 	)${1:,}
-
-
 snippet tif
 	'<tpl if="${1}">',
 		${3},
 	'</tpl>'${2:,}
-
 snippet telse
 	'<tpl else>',
 		${1},
-
+snippet tifelse
+	'<tpl if="${1}">',
+		${3},
+	'<tpl else>',
+		${4},
+	'</tpl>'${2:,}
 snippet telif
 	'<tpl elseif="${1}">',
 		${2},
-
 snippet tfor
 	'<tpl for="${1}">',
 		${3},
 	'</tpl>'${2:,}
+snippet ip
+	interpolate(gettext('${1}'), {
+		
+	}, true)
+snippet gt
+	gettext('${1}')
