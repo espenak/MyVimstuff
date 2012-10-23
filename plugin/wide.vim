@@ -2,13 +2,13 @@
 
 function! g:WideWidow()
     set columns=200
-    set lines=90
+    set lines=78
     exe "normal \<c-w>\="
 endfunction
 
 function! g:NoWideWindow()
     set columns=100
-    set lines=90
+    set lines=78
     exe "normal \<c-w>\="
 endfunction
 

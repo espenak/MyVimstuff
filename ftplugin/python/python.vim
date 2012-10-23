@@ -20,10 +20,12 @@ let python_highlight_all=1
 	"if os.path.isdir(p):
 		"vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
 "EOF
-setlocal path +=~/src/django-trunk
+"setlocal path +=~/src/django-trunk
 
 
 setlocal iskeyword+=-
+setlocal foldmethod=indent
+setlocal nofoldenable
 
 "highlight OverCommentLength guibg=#dddddd
 "let w:m1=matchadd('OverCommentLength', '\%<80v.\%>77v', -1)
