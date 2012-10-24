@@ -40,6 +40,10 @@ set statusline+=%#Comment#\ %r%m                    " [RO][modified]
 set statusline+=%#Comment#\ (\%L\ lines)[%l:%c]\    " Lines in file, lineno, colno
 set statusline+=%*                                  " Switch back to normal statusline highlight
 
+" If this many milliseconds nothing is typed the swap file will be
+" written to disk. Also used for the CursorHold autocommand event.
+set updatetime=250
+
 
 " Stuff that only works in 7.3 and greater
 if v:version >= 703
