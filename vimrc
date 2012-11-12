@@ -95,6 +95,17 @@ au BufRead,BufNewFile *.less setlocal filetype=less
 au BufRead,BufNewFile supervisord.conf setlocal filetype=cfg
 
 
+augroup json_autocmd 
+  autocmd! 
+  autocmd FileType json set autoindent 
+  autocmd FileType json set formatoptions=tcq2l 
+  autocmd FileType json set textwidth=78 shiftwidth=2 
+  autocmd FileType json set softtabstop=2 tabstop=8 
+  autocmd FileType json set expandtab 
+  autocmd FileType json set foldmethod=syntax 
+augroup END 
+
+
 
 " Configure taglist plugin
 inoremap <F11> <ESC>:TlistToggle<CR>
