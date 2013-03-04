@@ -3,11 +3,15 @@ setlocal softtabstop=4
 setlocal shiftwidth=4
 setlocal smarttab
 setlocal expandtab
-setlocal smartindent
 setlocal textwidth=0
-setlocal nosmartindent
+"setlocal smartindent
+"setlocal nosmartindent
 "let g:python_highlight_all=1
 let python_highlight_all=1
+setlocal smartindent
+setlocal cinwords=if,elif,else,for,while,try,except,finally,def,class
+setlocal nocindent
+
 
 
 " Add all python files on path to the 'gf' path
