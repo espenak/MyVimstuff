@@ -94,6 +94,7 @@ au BufRead,BufNewFile *.klg setlocal filetype=cpp
 au BufRead,BufNewFile *.less setlocal filetype=less
 au BufRead,BufNewFile supervisord.conf setlocal filetype=cfg
 au BufRead,BufNewFile Vagrantfile setlocal filetype=ruby
+au BufRead,BufNewFile *.coffee setlocal filetype=coffee
 
 
 augroup json_autocmd 
