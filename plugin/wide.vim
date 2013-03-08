@@ -1,7 +1,7 @@
 " author: Espen Angell Kristiansen <post@espenak.net>
 
 function! g:WideWidow()
-    set columns=200
+    set columns=220
     set lines=78
     exe "normal \<c-w>\="
 endfunction
