@@ -36,7 +36,6 @@ setlocal nofoldenable
 "let w:m2=matchadd('ErrorMsg', '\%>79v.\+', -1)
 
 
-
 " OMNI complete (ctags) and cross referencing ctags+cscope
 "map <C-F12> :!ctags --python-kinds=-i -R .<CR>:!~/.vim/bin/pycscope.py -R .<CR>
 if(filereadable("cscope.out"))
