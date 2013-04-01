@@ -175,9 +175,6 @@ let g:CommandTMaxHeight=10
 let g:CommandTMatchWindowReverse=1
 
 
-" NERDCommenter
-let g:NERDCustomDelimiters = { 'dustjs': { 'left': '{!', 'right': '!}' } }
-
 
 " Settings for the link plugin
 python << EOF
