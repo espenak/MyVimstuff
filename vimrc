@@ -175,6 +175,10 @@ let g:CommandTMaxHeight=10
 let g:CommandTMatchWindowReverse=1
 
 
+" NERDCommenter
+let g:NERDCustomDelimiters = { 'dustjs': { 'left': '{!', 'right': '!}' } }
+
+
 " Settings for the link plugin
 python << EOF
 import platform
@@ -197,6 +201,9 @@ EOF
 " Autoimport plugins in ~/.vim/bundle/
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+filetype off
+syntax on
+filetype plugin indent on
 
 
 if executable('/usr/local/bin/ctags')
