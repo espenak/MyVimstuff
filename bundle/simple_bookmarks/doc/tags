@@ -1,0 +1,12 @@
+:Bookmark	bookmark.txt	/*:Bookmark*
+:CopenBookmarks	bookmark.txt	/*:CopenBookmarks*
+:DelBookmark	bookmark.txt	/*:DelBookmark*
+:GotoBookmark	bookmark.txt	/*:GotoBookmark*
+g:simple_bookmarks_filename	bookmark.txt	/*g:simple_bookmarks_filename*
+simple-bookmarks	bookmark.txt	/*simple-bookmarks*
+simple-bookmarks-commands	bookmark.txt	/*simple-bookmarks-commands*
+simple-bookmarks-contents	bookmark.txt	/*simple-bookmarks-contents*
+simple-bookmarks-installation	bookmark.txt	/*simple-bookmarks-installation*
+simple-bookmarks-issues	bookmark.txt	/*simple-bookmarks-issues*
+simple-bookmarks-settings	bookmark.txt	/*simple-bookmarks-settings*
+simple-bookmarks-usage	bookmark.txt	/*simple-bookmarks-usage*
