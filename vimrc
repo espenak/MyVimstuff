@@ -196,8 +196,9 @@ EOF
 
 
 " Autoimport plugins in ~/.vim/bundle/
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
+"call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
 filetype off
 syntax on
 filetype plugin indent on
