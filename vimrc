@@ -173,6 +173,8 @@ au BufEnter *.vimprojects call g:foldWithSpace()
 " Command-t settings
 let g:CommandTMaxHeight=10
 let g:CommandTMatchWindowReverse=1
+let g:CommandTMaxFiles = 100000
+let g:CommandTMaxDepth = 50
 
 
 
