@@ -107,6 +107,8 @@ augroup json_autocmd
   autocmd FileType json set foldmethod=syntax 
 augroup END 
 
+autocmd FileType todotxt setlocal number
+
 
 
 " Configure taglist plugin
