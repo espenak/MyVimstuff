@@ -72,6 +72,21 @@ class DjangoOpen(object):
         vim.command('tabedit {}'.format(self.testsdir))
 
 
+    def _find_staticsubdir(self, name):
+        for root, dirs, files in os.walk(self.staticdir):
+            if os.path.basename(root) == name:
+                return os.path.abspath(root)
+        raise ValueError('No directory named: {} in {}'.format(name, self.staticdir))
+
+    def _find_app_coffee(self):
+        return self._find_staticsubdir('app_coffee')
+
+    def vsplitopen_appcoffee(self):
+        vim.command('rightbelow vsplit {}'.format(self._find_app_coffee()))
+    def tabopen_appcoffee(self):
+        vim.command('tabedit {}'.format(self._find_app_coffee()))
+
+
 #altfiles = AlternateFiles()
 #altfilesWin = AlternateFiles(openInWin=True)
 
@@ -96,6 +111,8 @@ fun! DjangoOpenSetup()
     command! -nargs=0 DjTtplDirCreate :python DjangoOpen().tabopen_templates(create_dir=True)
     command! -nargs=0 DjTstaticDir :python DjangoOpen().tabopen_static()
     command! -nargs=0 DjTstaticDirCreate :python DjangoOpen().tabopen_static(create_dir=True)
+    command! -nargs=0 DjVappcoffee :python DjangoOpen().vsplitopen_appcoffee()
+    command! -nargs=0 DjTappcoffee :python DjangoOpen().tabopen_appcoffee()
 endfun
 
 "au BufNewFile,BufRead *.h call SetupAltFile()
