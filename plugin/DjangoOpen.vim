@@ -8,29 +8,31 @@ import sys
 class DjangoOpen(object):
     def __init__(self):
         self.filepath = os.path.abspath(os.path.normpath(vim.current.buffer.name))
-        self.approot = self._find_approot()
-        self.modelspath = os.path.join(self.approot, 'models.py')
-        self.testsdir = os.path.join(self.approot, 'tests')
-        self.appname = os.path.basename(self.approot)
-        self.templatesdir = os.path.join(self.approot, 'templates', self.appname)
-        self.staticdir = os.path.join(self.approot, 'static', self.appname)
+        self.root = self._find_root()
+        self.modelspath = os.path.join(self.root, 'models.py')
+        self.viewspath = os.path.join(self.root, 'views.py')
+        self.urlspath = os.path.join(self.root, 'urls.py')
+        self.testsdir = os.path.join(self.root, 'tests')
+        self.appname = os.path.basename(self.root)
+        self.templatesdir = os.path.join(self.root, 'templates', self.appname)
+        self.staticdir = os.path.join(self.root, 'static', self.appname)
 
-    def _find_approot(self):
-        approot = self.filepath
+    def _find_root(self):
+        root = self.filepath
         while True:
-            approot = os.path.dirname(os.path.abspath(approot))
-            if not os.path.exists(os.path.join(approot, '__init__.py')):
+            root = os.path.dirname(os.path.abspath(root))
+            if not os.path.exists(os.path.join(root, '__init__.py')):
                 break
-            modelsfile = os.path.join(approot, 'models.py')
+            modelsfile = os.path.join(root, 'models.py')
             if os.path.exists(modelsfile):
-                return approot
+                return root
         raise ValueError('Could not find the Django app root (the directory with models.py)')
         return False
 
     def _find_testfile(self, create_dir=False):
-        approot_relfilepath = os.path.relpath(self.filepath, self.approot)
-        testsdirpath = os.path.split(os.path.dirname(approot_relfilepath))
-        testsdir = os.path.join(self.approot, 'tests', *testsdirpath)
+        root_relfilepath = os.path.relpath(self.filepath, self.root)
+        testsdirpath = os.path.split(os.path.dirname(root_relfilepath))
+        testsdir = os.path.join(self.root, 'tests', *testsdirpath)
         if create_dir and not os.path.exists(testsdir):
             os.makedirs(testsdir)
         filename = os.path.basename(self.filepath)
@@ -61,10 +63,20 @@ class DjangoOpen(object):
     def vsplitopen_models(self):
         vim.command('rightbelow vsplit {}'.format(self.modelspath))
 
-    def vsplitopen_approot(self):
-        vim.command('rightbelow vsplit {}'.format(self.approot))
-    def tabopen_approot(self):
-        vim.command('tabedit {}'.format(self.approot))
+    def tabopen_urls(self):
+        vim.command('tabedit {}'.format(self.urlspath))
+    def vsplitopen_urls(self):
+        vim.command('rightbelow vsplit {}'.format(self.urlspath))
+
+    def tabopen_views(self):
+        vim.command('tabedit {}'.format(self.viewspath))
+    def vsplitopen_views(self):
+        vim.command('rightbelow vsplit {}'.format(self.viewspath))
+
+    def vsplitopen_root(self):
+        vim.command('rightbelow vsplit {}'.format(self.root))
+    def tabopen_root(self):
+        vim.command('tabedit {}'.format(self.root))
 
     def vsplitopen_testsdir(self):
         vim.command('rightbelow vsplit {}'.format(self.testsdir))
@@ -97,12 +109,16 @@ fun! DjangoOpenSetup()
     " of:
     " - V: vsplit
     " - T: tabedit
-    command! -nargs=0 DjVapproot :python DjangoOpen().vsplitopen_approot()
-    command! -nargs=0 DjTapproot :python DjangoOpen().tabopen_approot()
+    command! -nargs=0 DjVroot :python DjangoOpen().vsplitopen_root()
+    command! -nargs=0 DjTroot :python DjangoOpen().tabopen_root()
     command! -nargs=0 DjVtestsdir :python DjangoOpen().vsplitopen_testsdir()
     command! -nargs=0 DjTtestsdir :python DjangoOpen().tabopen_testsdir()
     command! -nargs=0 DjVmodels :python DjangoOpen().vsplitopen_models()
     command! -nargs=0 DjTmodels :python DjangoOpen().tabopen_models()
+    command! -nargs=0 DjVurls :python DjangoOpen().vsplitopen_urls()
+    command! -nargs=0 DjTurls :python DjangoOpen().tabopen_urls()
+    command! -nargs=0 DjVviews :python DjangoOpen().vsplitopen_views()
+    command! -nargs=0 DjTviews :python DjangoOpen().tabopen_views()
     command! -nargs=0 DjVtest :python DjangoOpen().vsplitopen_test()
     command! -nargs=0 DjVtestCreate :python DjangoOpen().vsplitopen_test(create_dir=True)
     command! -nargs=0 DjTtest :python DjangoOpen().tabopen_test()
