@@ -53,7 +53,7 @@ class DjangoOpen(object):
             os.path.makedirs(self.staticdir)
         vim.command('tabedit {}'.format(self.staticdir))
 
-    def tabopen_templates(self):
+    def tabopen_templates(self, create_dir=False):
         if create_dir:
             os.path.makedirs(self.templatesdir)
         vim.command('tabedit {}'.format(self.templatesdir))
@@ -123,8 +123,8 @@ fun! DjangoOpenSetup()
     command! -nargs=0 DjVtestCreate :python DjangoOpen().vsplitopen_test(create_dir=True)
     command! -nargs=0 DjTtest :python DjangoOpen().tabopen_test()
     command! -nargs=0 DjTtestCreate :python DjangoOpen().tabopen_test(create_dir=True)
-    command! -nargs=0 DjTtplDir :python DjangoOpen().tabopen_templates()
-    command! -nargs=0 DjTtplDirCreate :python DjangoOpen().tabopen_templates(create_dir=True)
+    command! -nargs=0 DjTtemplatesDir :python DjangoOpen().tabopen_templates()
+    command! -nargs=0 DjTtemplatesDirCreate :python DjangoOpen().tabopen_templates(create_dir=True)
     command! -nargs=0 DjTstaticDir :python DjangoOpen().tabopen_static()
     command! -nargs=0 DjTstaticDirCreate :python DjangoOpen().tabopen_static(create_dir=True)
     command! -nargs=0 DjVappcoffee :python DjangoOpen().vsplitopen_appcoffee()
