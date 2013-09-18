@@ -50,12 +50,12 @@ class DjangoOpen(object):
 
     def tabopen_static(self, create_dir=False):
         if create_dir:
-            os.path.makedirs(self.staticdir)
+            os.makedirs(self.staticdir)
         vim.command('tabedit {}'.format(self.staticdir))
 
     def tabopen_templates(self, create_dir=False):
         if create_dir:
-            os.path.makedirs(self.templatesdir)
+            os.makedirs(self.templatesdir)
         vim.command('tabedit {}'.format(self.templatesdir))
 
     def tabopen_models(self):
