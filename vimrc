@@ -95,16 +95,17 @@ au BufRead,BufNewFile *.less setlocal filetype=less
 au BufRead,BufNewFile supervisord.conf setlocal filetype=cfg
 au BufRead,BufNewFile Vagrantfile setlocal filetype=ruby
 au BufRead,BufNewFile *.coffee setlocal filetype=coffee
+au BufRead,BufNewFile *.html setlocal filetype=htmldjango
 
 
 augroup json_autocmd 
   autocmd! 
-  autocmd FileType json set autoindent 
-  autocmd FileType json set formatoptions=tcq2l 
-  autocmd FileType json set textwidth=78 shiftwidth=2 
-  autocmd FileType json set softtabstop=2 tabstop=8 
-  autocmd FileType json set expandtab 
-  autocmd FileType json set foldmethod=syntax 
+  autocmd FileType json setlocal autoindent 
+  autocmd FileType json setlocal formatoptions=tcq2l 
+  autocmd FileType json setlocal textwidth=78 shiftwidth=2 
+  autocmd FileType json setlocal softtabstop=2 tabstop=8 
+  autocmd FileType json setlocal expandtab 
+  autocmd FileType json setlocal foldmethod=syntax 
 augroup END 
 
 autocmd FileType todotxt setlocal number
